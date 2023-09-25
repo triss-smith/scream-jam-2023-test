@@ -174,9 +174,9 @@ QualitySettings:
     softVegetation: 1
     realtimeReflectionProbes: 0
     billboardsFaceCameraPosition: 0
-    useLegacyDetailDistribution: 1
+    useLegacyDetailDistribution: 0
     vSyncCount: 1
-    realtimeGICPUUsage: 50
+    realtimeGICPUUsage: 75
     lodBias: 1
     maximumLODLevel: 0
     enableLODCrossFade: 1
@@ -251,7 +251,8 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
   - serializedVersion: 3
     name: Ultra
     pixelLightCount: 4
@@ -300,7 +301,8 @@ QualitySettings:
     terrainBillboardStart: 50
     terrainFadeLength: 5
     terrainMaxTrees: 50
-    excludedTargetPlatforms: []
+    excludedTargetPlatforms:
+    - Standalone
   m_TextureMipmapLimitGroupNames: []
   m_PerPlatformDefaultQuality:
     Android: 2

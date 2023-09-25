@@ -219,7 +219,7 @@ GameObject:
   - component: {fileID: 440059141}
   - component: {fileID: 440059140}
   m_Layer: 1
-  m_Name: Light 2D
+  m_Name: global
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -238,11 +238,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ComponentVersion: 1
-  m_LightType: 3
+  m_LightType: 4
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Color: {r: 1, g: 0.71341777, b: 0, a: 1}
+  m_Intensity: 0.08
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
   m_ApplyToSortingLayers: 0000000013dfbb64230463f723e9831cc9d77979f71b5651
@@ -284,12 +284,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 440059139}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.42, y: -3.19, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -13.150652, y: -2.0661426, z: -0.21059139}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1097072398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &696834747
 GameObject:
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 696834750}
   - component: {fileID: 696834749}
   m_Layer: 6
-  m_Name: Light 2D (1)
+  m_Name: player_flashlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -317,12 +317,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696834747}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.011997447, y: 0.011507522, z: -0.69213295, w: 0.7215786}
-  m_LocalPosition: {x: -0.01, y: -0.32, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: -1}
+  m_LocalRotation: {x: -0.011997447, y: -0.011507522, z: -0.69213295, w: 0.7215786}
+  m_LocalPosition: {x: -8.740652, y: -2.1181424, z: -0.21059139}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 957351569}
+  m_Father: {fileID: 1097072398}
   m_LocalEulerAnglesHint: {x: -1.905, y: 0, z: -87.614}
 --- !u!114 &696834749
 MonoBehaviour:
@@ -409,7 +409,7 @@ GameObject:
   - component: {fileID: 1061818242}
   m_Layer: 0
   m_Name: Main Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -663,6 +663,39 @@ MonoBehaviour:
     mipBias: 0
     varianceClampScale: 0.9
     contrastAdaptiveSharpening: 0
+--- !u!1 &1097072397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1097072398}
+  m_Layer: 0
+  m_Name: Lights
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1097072398
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1097072397}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.730652, y: -1.1238575, z: 0.21059139}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 696834748}
+  - {fileID: 440059141}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1108655953
 GameObject:
   m_ObjectHideFlags: 0
@@ -3460,11 +3493,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 5273075388156316969, guid: 665ad05744ba1e8439907138df2f35c0,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 696834748}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 665ad05744ba1e8439907138df2f35c0, type: 3}
 --- !u!1660057539 &9223372036854775807
@@ -3475,5 +3504,5 @@ SceneRoots:
   - {fileID: 1061818239}
   - {fileID: 2092891141}
   - {fileID: 2771882969906586423}
-  - {fileID: 440059141}
   - {fileID: 2115626024}
+  - {fileID: 1097072398}
