@@ -14,6 +14,15 @@ public class light_follow : MonoBehaviour
     void Update()
     {
         // follow the player
-        transform.position = new Vector3(GameObject.Find("Player").transform.position.x, GameObject.Find("Player").transform.position.y, -10);
+        transform.position = new Vector3(GameObject.Find("Player").transform.position.x, GameObject.Find("Player").transform.position.y, -1);
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        // mousePosition.z = transform.position.z;
+        Quaternion lightRotation = Quaternion.LookRotation(Vector3.forward, mousePosition - transform.position);
+
+        // rotate the light with the mouse
+
+
+
+        transform.rotation = lightRotation;
     }
 }
