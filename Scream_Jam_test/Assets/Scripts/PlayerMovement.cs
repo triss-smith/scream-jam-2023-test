@@ -6,7 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float runSpeed = 10f;
+    [SerializeField] float walkSpeed = 5f;
     [SerializeField] float jumpSpeed = 5f;
+    public bool Sprinting = false;
+    public int Stamina = 10;
+    public bool StaminaRegen = false;
 
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
@@ -43,8 +47,16 @@ public class PlayerMovement : MonoBehaviour
 
     void Run()
     {
-        Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, myRigidbody.velocity.y);
-        myRigidbody.velocity = playerVelocity;
+        if (Input.GetKey(KeyCode.LeftShift) == false)
+        {
+            myRigidbody.velocity = new Vector2(moveInput.x * walkSpeed, myRigidbody.velocity.y);
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && Stamina > 0 && StaminaRegen == false)
+        {
+            myRigidbody.velocity = new Vector2(moveInput.x * runSpeed, myRigidbody.velocity.y);
+            Sprinting = true;
+            Sprinting1();
+        }
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
         myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
@@ -58,5 +70,38 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
         }
+    }
+    void Sprinting1 ()
+    {
+        if (Sprinting == true)
+        {
+            StartCoroutine(Sprinting2 ());
+        }
+    }
+
+    IEnumerator Sprinting2 ()
+    {
+        yield return new WaitForSeconds(1);
+        Stamina -= 1;
+        Sprinting1();
+    }
+
+    void StaminaRegen1 ()
+    {
+        if (Stamina == 10)
+        {
+            StaminaRegen = false;
+        }
+        else if (StaminaRegen == true)
+        {
+            StartCoroutine(StaminaRegen2 ());
+        }
+    }
+
+    IEnumerator StaminaRegen2 ()
+    {
+        yield return new WaitForSeconds(1);
+        Stamina += 1;
+        StaminaRegen1();
     }
 }
