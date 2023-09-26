@@ -18,7 +18,6 @@ public class light_follow : MonoBehaviour
         Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         
         mousePosition.z = transform.position.z;
-        Debug.Log(Vector3.forward);
         Quaternion lightRotation = Quaternion.LookRotation(Vector3.forward, mousePosition - transform.position);
 
         transform.rotation = lightRotation;

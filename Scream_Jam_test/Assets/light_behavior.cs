@@ -32,15 +32,17 @@ public class light_behavior : MonoBehaviour
 
     void FlashLightOn()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0))
+        if (Input.GetKeyDown(KeyCode.Mouse0) && FlashlightBattery > 0)
         {
             Debug.Log("fire");
             FlashLightBurning = true;
             flashlight.pointLightOuterRadius = flashlightBrightRange;
-            FlashLightOn();
+        } 
 
-        } else {
-            FlashLightBurning = false;       
+        if (Input.GetKeyUp(KeyCode.Mouse0))
+        {
+            Debug.Log("stop fire");
+            FlashLightBurning = false;
         }
 
         if (FlashLightBurning) {
@@ -54,10 +56,10 @@ public class light_behavior : MonoBehaviour
 
     IEnumerator DepleteFlashlight()
         {
-            while (FlashlightBattery > 0)
+            while (FlashLightBurning && FlashlightBattery > 0)
             {
-                FlashlightBattery -= 1;
-                if (flashlightRange > 2.5) {
+                FlashlightBattery -= 0.5f;
+                if (flashlightRange > 2.0) {
                     flashlightRange -= 0.01f;
                 }
                 yield return new WaitForSeconds(0.5f);
