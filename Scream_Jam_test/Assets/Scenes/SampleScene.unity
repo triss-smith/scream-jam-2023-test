@@ -302,6 +302,7 @@ GameObject:
   - component: {fileID: 696834748}
   - component: {fileID: 696834750}
   - component: {fileID: 696834749}
+  - component: {fileID: 696834751}
   m_Layer: 6
   m_Name: player_flashlight
   m_TagString: Untagged
@@ -352,7 +353,7 @@ MonoBehaviour:
   m_LightType: 3
   m_BlendStyleIndex: 0
   m_FalloffIntensity: 0.5
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.9811321, g: 0.55273145, b: 0.1064436, a: 1}
   m_Intensity: 2
   m_LightVolumeIntensity: 1
   m_LightVolumeIntensityEnabled: 0
@@ -373,10 +374,10 @@ MonoBehaviour:
   m_LocalBounds:
     m_Center: {x: 0, y: -0.00000011920929, z: 0}
     m_Extent: {x: 0.9985302, y: 0.99853027, z: 0}
-  m_PointLightInnerAngle: 28.341736
-  m_PointLightOuterAngle: 58.49249
+  m_PointLightInnerAngle: 10.832869
+  m_PointLightOuterAngle: 40.983627
   m_PointLightInnerRadius: 0
-  m_PointLightOuterRadius: 5
+  m_PointLightOuterRadius: 3.5
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
@@ -387,6 +388,21 @@ MonoBehaviour:
   - {x: 0, y: -0.25, z: 0}
   - {x: 0.5, y: 0, z: 0}
   - {x: 0, y: 0.25, z: 0}
+--- !u!114 &696834751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 696834747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a758c1bb68a74a4d88d53bf3be8c1eb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flashlightRange: 3.5
+  flashlightInnerAngle: 30
+  flashlightOuterAngle: 60
 --- !u!4 &957351569 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5273075388156316969, guid: 665ad05744ba1e8439907138df2f35c0,
