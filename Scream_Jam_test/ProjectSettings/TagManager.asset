@@ -47,12 +47,12 @@ TagManager:
   - name: Middleground
     uniqueID: 2038028233
     locked: 0
-  - name: Foreground
-    uniqueID: 478406947
-    locked: 0
   - name: Platforms
     uniqueID: 1690033939
     locked: 0
   - name: Player
     uniqueID: 4150461475
+    locked: 0
+  - name: Foreground
+    uniqueID: 478406947
     locked: 0
