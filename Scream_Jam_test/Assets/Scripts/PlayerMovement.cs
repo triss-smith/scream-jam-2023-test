@@ -27,8 +27,11 @@ public class PlayerMovement : MonoBehaviour
    
     void Update()
     {
-        Run();
-        FlipSprite();
+        Debug.Log("dialog active" + DialogBehavior.textActive);
+        if (!DialogBehavior.textActive) {
+            Run();
+            FlipSprite();
+        }
     }
 
     void OnMove(InputValue value)
