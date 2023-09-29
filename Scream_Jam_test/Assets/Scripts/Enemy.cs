@@ -4,53 +4,34 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    public Transform player;
+    public float moveSpeed = 5f;
+    private Rigidbody2D rb;
+    private Vector2 movement;
+    
 
-    public GameObject player;
-    private Transform playerPos;
-    private Vector2 currentPos;
-    public float distance;
-    public float speedEnemy;
-    private Animator enemyAnim;
-
-    // Start is called before the first frame update
     void Start()
     {
-        playerPos = player.GetComponent<Transform>();
-        currentPos = GetComponent<Transform>().position;
-        enemyAnim = GetComponent<Animator>();
+        rb = this.GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
+    void Update() 
     {
-        if(Vector2.Distance(transform.position, playerPos.position) < distance) 
-        {
-            transform.position = Vector2.MoveTowards(transform.position, playerPos.position, speedEnemy * Time.deltaTime);
-            enemyAnim.SetBool("isAttacking", true);
-            //FlipSprite();
-        }
-        else
-        {
-            if(Vector2.Distance(transform.position, currentPos) <= 0)
-            {
-                enemyAnim.SetBool("isAttacking", false);
-            }
-            else
-            {
-                transform.position = Vector2.MoveTowards(transform.position, currentPos, speedEnemy * Time.deltaTime);
-                enemyAnim.SetBool("isAttacking", true);
-               // FlipSprite();
-            }
-        }
+        Vector3 direction = player.position - transform.position;
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        rb.rotation = angle;
+        direction.Normalize();
+        movement = direction;
     }
 
-   /* void FlipSprite()
+    private void FixedUpdate()
     {
-        bool isAttacking;
+        moveCharacter(movement);
+    }
 
-        if (isAttacking)
-        {
-            transform.localScale = new Vector2(Mathf.Sign(myRigidbody.velocity.x), 1f);
-        }
-    } */
+    void moveCharacter(Vector2 direction)
+    {
+        rb.MovePosition((Vector2)transform.position + (direction * moveSpeed * Time.deltaTime));
+    }
+
 }
