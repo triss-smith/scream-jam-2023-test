@@ -5,13 +5,17 @@ using UnityEngine.Rendering.Universal;
 
 public class light_behavior : MonoBehaviour
 {
-    // Start is called before the first frame update
     [SerializeField] float flashlightRange = 4.5f;
     [SerializeField] float flashlightBrightRange = 10f;
     [SerializeField] float flashlightInnerAngle = 40;
     [SerializeField] float flashlightOuterAngle = 70;
+
+    [SerializeField] float raycastDistance = 20f;
+    
     float FlashlightBattery = 100f;
     bool FlashLightBurning = false;
+    
+    //Animator myAnimator;
 
     Light2D flashlight;
 
@@ -20,6 +24,7 @@ public class light_behavior : MonoBehaviour
         flashlight = GetComponent<Light2D>();
         flashlight.pointLightInnerAngle = flashlightInnerAngle;
         flashlight.pointLightOuterAngle = flashlightOuterAngle;
+        //myAnimator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -37,6 +42,7 @@ public class light_behavior : MonoBehaviour
             Debug.Log("fire");
             FlashLightBurning = true;
             flashlight.pointLightOuterRadius = flashlightBrightRange;
+            //RayCast();
         } 
 
         if (Input.GetKeyUp(KeyCode.Mouse0))
@@ -65,4 +71,24 @@ public class light_behavior : MonoBehaviour
                 yield return new WaitForSeconds(0.5f);
             }
         }
+    
+    /*void RayCast()
+    {
+
+        Vector2 screenPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 playerPos = transform.position;
+        Vector2 shot = screenPos - playerPos;
+
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, shot, raycastDistance);
+        if (hit.collider != null)
+        {
+            myAnimator.SetBool("isDamaged", true);
+            Debug.Log(hit.collider.name);
+        } else
+        {
+            myAnimator.SetBool("isDamaged", false);
+        }
+
+        Debug.DrawRay(transform.position, shot, Color.red);
+    }*/
 }
