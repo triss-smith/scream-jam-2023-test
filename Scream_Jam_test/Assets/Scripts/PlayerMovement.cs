@@ -12,6 +12,8 @@ public class PlayerMovement : MonoBehaviour
     public int Stamina = 10;
     public bool StaminaRegen = false;
 
+   
+
     Vector2 moveInput;
     Rigidbody2D myRigidbody;
     Animator myAnimator;
@@ -36,7 +38,10 @@ public class PlayerMovement : MonoBehaviour
 
     void OnMove(InputValue value)
     { 
-        moveInput = value.Get<Vector2>();   
+        moveInput = value.Get<Vector2>();  
+
+        //Need to make this play only while player is pressing a move button
+        //AudioManager.Instance.PlaySFX("Running"); 
     }
 
     void OnJump(InputValue value)
@@ -45,6 +50,8 @@ public class PlayerMovement : MonoBehaviour
         if(value.isPressed)
         {
             myRigidbody.velocity += new Vector2(0f, jumpSpeed);
+            //Audio for jump sfx
+            AudioManager.Instance.PlaySFX("Jump");
         }
     }
 
@@ -59,10 +66,12 @@ public class PlayerMovement : MonoBehaviour
             myRigidbody.velocity = new Vector2(moveInput.x * runSpeed, myRigidbody.velocity.y);
             Sprinting = true;
             Sprinting1();
+            
         }
 
         bool playerHasHorizontalSpeed = Mathf.Abs(myRigidbody.velocity.x) > Mathf.Epsilon;
         myAnimator.SetBool("isRunning", playerHasHorizontalSpeed);
+        
     }
 
     void FlipSprite()
